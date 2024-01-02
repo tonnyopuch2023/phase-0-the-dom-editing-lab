@@ -1,1 +1,68 @@
-<!-- Write your code here! -->
+<!-- Write your code here>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Introduction to the DOM Lab</title>
+</head>
+<body>
+  <script>
+    // Add an h1 element
+    const h1 = document.createElement('h1');
+    h1.textContent = 'My HTML adventure';
+    document.body.appendChild(h1);
+
+    // Add a paragraph with inline elements
+    const paragraph = document.createElement('p');
+    paragraph.innerHTML = `We're writing HTML markup to display in our 
+      <strong>browser</strong>. We're basically telling computers what to do. 
+      <em>Neat!</em>`;
+    document.body.appendChild(paragraph);
+
+    // Add a hyperlink using the a tag
+    const hyperlink = document.createElement('a');
+    hyperlink.href = 'https://developer.mozilla.org/en-US/docs/Web/HTML';
+    hyperlink.textContent = 'HTML';
+    paragraph.insertBefore(hyperlink, paragraph.childNodes[1]);
+
+    // Add a table with specified content
+    const table = document.createElement('table');
+    const tableHeaders = ['Element name', 'Display value'];
+
+    // Create table header
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    tableHeaders.forEach(headerText => {
+      const th = document.createElement('th');
+      th.textContent = headerText;
+      headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // Create table body rows
+    const tbody = document.createElement('tbody');
+    const tableData = [
+      ['h1', 'block'],
+      ['p', 'block'],
+      ['strong', 'inline'],
+      ['em', 'inline']
+    ];
+    tableData.forEach(dataRow => {
+      const row = document.createElement('tr');
+      dataRow.forEach(cellText => {
+        const td = document.createElement('td');
+        td.textContent = cellText;
+        row.appendChild(td);
+      });
+      tbody.appendChild(row);
+    });
+    table.appendChild(tbody);
+
+    // Append the table to the document body
+    document.body.appendChild(table);
+  </script>
+</body>
+</html>
